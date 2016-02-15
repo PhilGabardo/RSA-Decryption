@@ -41,8 +41,7 @@ logarithmically). No ranges will overlap. For example, given 4 processes, work w
 
 The widening of the window_size attempts to address observation 1) and 2).
 
-To search for a prime in the range [start, end], the process uses a brute force approach. The process tests if every prime in the range fully divides n. If so, the
-key has been decrypted. This addresses observation 3).
+To search for a prime in the range [start, end], the process uses a brute force approach. The process tests if every prime in the range fully divides n. If so, the key has been decrypted (any number's prime factorization is always unique). This addresses observation 3).
 
 The processes keep searching ranges until start_index is greater than sqrt(n). This addresses observation 4).
 
