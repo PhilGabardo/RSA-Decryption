@@ -11,14 +11,14 @@ My algorithm attempts to distribute an equal amount of work to processors while 
 
 The algorithm was designed to address several important observations:
 
-1) The number of primes below some integer x can be approximated as x/log(x). 
+1. The number of primes below some integer x can be approximated as x/log(x). 
 This implies that the gap between primes increases with the natural logarithm of the integer.
-2) Finding the next prime number higher than some integer becomes increasing difficult as the integer becomes larger.
-3) The prime factorization of a number is unique. This implies that if the given key (n) is divisible by some prime p, then the 
+2. Finding the next prime number higher than some integer becomes increasing difficult as the integer becomes larger.
+3. The prime factorization of a number is unique. This implies that if the given key (n) is divisible by some prime p, then the 
 decryption primes are p and n/p.
-4) It is only necessary to determine if any prime in the range [2, sqrt(n)] is divisible by n. The rest of the primes in [sqrt(n), n] will
+4. It is only necessary to determine if any prime in the range [2, sqrt(n)] is divisible by n. The rest of the primes in [sqrt(n), n] will
 be complements in the division of n.
-5) If one processor finds the keys, it must signal all other processors that the key has been found in order to prevent the other processors from 
+5. If one processor finds the keys, it must signal all other processors that the key has been found in order to prevent the other processors from 
 doing redundant work.
 
 
@@ -28,16 +28,16 @@ Given p processes, each process will be given a start_index, end_index and windo
 is equal to start_index + window_size. window_size is equal to the number of bits needed to represent the start index (this makes the search space of each process increase 
 logarithmically). No ranges will overlap. For example, given 4 processes, work will be distributed as follows:
 
-P0 will search [2, 4] (2 bits needed to represent 2)
-P1 will search [4, 7] (3 bits needed to represent 4)
-P2 will search [7, 10] (3 bits needed to represent 7)
-P3 will search [10, 14] (4 bits needed to represent 10)
-P0 will search [14, 18] (4 bits needed to represent 14)
-P1 will search [18, 23] (5 bits needed to represent 18)
-P2 will search [23, 29] (5 bits needed to represent 23)
-P3 will search [29, 34] (5 bits needed to represent 29)
-P0 will search [34, 40] (6 bits needed to represent 34)	
-...
+*P0 will search [2, 4] (2 bits needed to represent 2)
+*P1 will search [4, 7] (3 bits needed to represent 4)
+*P2 will search [7, 10] (3 bits needed to represent 7)
+*P3 will search [10, 14] (4 bits needed to represent 10)
+*P0 will search [14, 18] (4 bits needed to represent 14)
+*P1 will search [18, 23] (5 bits needed to represent 18)
+*P2 will search [23, 29] (5 bits needed to represent 23)
+*P3 will search [29, 34] (5 bits needed to represent 29)
+*P0 will search [34, 40] (6 bits needed to represent 34)	
+*...
 
 The widening of the window_size attempts to address observation 1) and 2).
 
@@ -53,7 +53,7 @@ Each process tracks how long it runs for and sends its time to process 0, which 
 
 Pseudocode:
 
-
+```
 function decrypt(n){
 	(process_number, num_processes) = Initial_MPI() // fork processes
 	t1 = current_time()
@@ -128,6 +128,7 @@ function decrypt(n){
 	}
 	Finalize_MPI()
 }
+```
 
 #Make
 Run make to build the program. You must have MPI and GMP installed to build the program.
