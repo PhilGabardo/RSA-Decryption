@@ -28,16 +28,16 @@ Given p processes, each process will be given a start_index, end_index and windo
 is equal to start_index + window_size. window_size is equal to the number of bits needed to represent the start index (this makes the search space of each process increase 
 logarithmically). No ranges will overlap. For example, given 4 processes, work will be distributed as follows:
 
-*P0 will search [2, 4] (2 bits needed to represent 2)
-*P1 will search [4, 7] (3 bits needed to represent 4)
-*P2 will search [7, 10] (3 bits needed to represent 7)
-*P3 will search [10, 14] (4 bits needed to represent 10)
-*P0 will search [14, 18] (4 bits needed to represent 14)
-*P1 will search [18, 23] (5 bits needed to represent 18)
-*P2 will search [23, 29] (5 bits needed to represent 23)
-*P3 will search [29, 34] (5 bits needed to represent 29)
-*P0 will search [34, 40] (6 bits needed to represent 34)	
-*...
+* P0 will search [2, 4] (2 bits needed to represent 2)
+* P1 will search [4, 7] (3 bits needed to represent 4)
+* P2 will search [7, 10] (3 bits needed to represent 7)
+* P3 will search [10, 14] (4 bits needed to represent 10)
+* P0 will search [14, 18] (4 bits needed to represent 14)
+* P1 will search [18, 23] (5 bits needed to represent 18)
+* P2 will search [23, 29] (5 bits needed to represent 23)
+* P3 will search [29, 34] (5 bits needed to represent 29)
+* P0 will search [34, 40] (6 bits needed to represent 34)	
+* ...
 
 The widening of the window_size attempts to address observation 1) and 2).
 
