@@ -1,12 +1,10 @@
-#Summary (Content taken from Ned Nedialkov's SFWR ENG 4F03 Winter 2016 assignment2 description)
-An RSA public key (see e.g. https://en.wikipedia.org/wiki/RSA_(cryptosystem)) is the product of two distinct large prime numbers. Cracking such a key involves
-finding the two prime numbers.
+#Summary (Credits to Dr. Ned Nedialkov)
+An RSA public key (see e.g. https://en.wikipedia.org/wiki/RSA_(cryptosystem)) is the product of two distinct large prime numbers. Cracking such a key involves finding the two prime numbers.
 
 This program takes as an input a number n that is the product of two prime numbers and efficiently finds these numbers.
 The program is run as
 ```mpirun -np P ./factor n```
-where P is the number of processes, factor is the name of the executable, and n is a decimal
-string representing an integer number that is the product of two prime numbers.
+where P is the number of processes, factor is the name of the executable, and n is a decimal string representing an integer number that is the product of two prime numbers.
 
 # Algorithm description
 My algorithm attempts to distribute an equal amount of work to processors while decrypting the RSA key quickly and efficiently. 
@@ -130,3 +128,6 @@ function decrypt(n){
 	}
 	Finalize_MPI()
 }
+
+#Make
+Run make to build the program. You must have MPI and GMP installed to build the program.
