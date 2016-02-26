@@ -4,7 +4,7 @@ An RSA public key (see e.g. https://en.wikipedia.org/wiki/RSA_(cryptosystem)) is
 This program takes as an input a number n that is the product of two prime numbers and efficiently finds these numbers.
 The program is run as
 ```mpirun -np P ./factor n```
-where P is the number of processes, factor is the name of the executable, and n is a decimal string representing an integer number that is the product of two prime numbers.
+where P is the number of processes, factor is the name of the executable, and n is a decimal string representing an integer number that is the product of two prime numbers. The program also generates a file called time_<n> which outlines how much compute time was spent by each of the P processes.
 
 # Algorithm description
 My algorithm attempts to distribute an equal amount of work to processors while decrypting the RSA key quickly and efficiently. 
